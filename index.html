@@ -322,11 +322,11 @@
         }
 
         .inline-cite {
-            font-size: 12px;
+            font-size: 11px;
             color: rgba(255, 255, 255, 0.4);
             font-style: italic;
-            white-space: nowrap;
             margin-left: 5px;
+            display: inline-block;
         }
 
         /* Interactive Timeline */
@@ -409,7 +409,7 @@
             background: var(--primary);
             border-color: #fff;
             color: #000;
-            box-shadow: 0 0 30px var(--primary-glow);
+            box-shadow: 0 0 15px var(--primary-glow);
         }
 
         .fossil-name {
@@ -627,7 +627,7 @@
             }
 
             h2 {
-                font-size: 32px;
+                font-size: 28px;
             }
 
             .header-deco {
@@ -636,24 +636,44 @@
 
             .timeline-track {
                 flex-direction: column;
-                gap: 25px;
-                padding: 0 10px;
+                gap: 15px;
+                padding: 0;
                 align-items: stretch;
             }
 
             .fossil-node {
                 width: 100%;
                 flex-direction: row;
-                gap: 20px;
+                gap: 15px;
                 text-align: left;
-                padding: 15px;
+                padding: 12px 15px;
                 background: rgba(255, 255, 255, 0.05);
                 border-radius: 12px;
                 border: 1px solid rgba(255, 255, 255, 0.1);
             }
 
+            .fossil-detail-content {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .fossil-icon-wrapper {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+                flex-shrink: 0;
+            }
+
+            .fossil-name {
+                margin-top: 0;
+                font-size: 16px;
+            }
+
             .fossil-detail {
                 text-align: left;
+                margin-top: 4px;
+                font-size: 12px;
             }
 
             .timeline-progress {
@@ -665,23 +685,33 @@
             }
 
             .content-panels {
-                padding: 20px;
+                padding: 15px;
                 gap: 40px;
+                overflow-x: hidden;
             }
 
             .poster {
                 margin: 0;
                 border-radius: 0;
+                width: 100%;
+                max-width: 100vw;
+                overflow-x: hidden;
             }
         }
 
         @media (max-width: 500px) {
             h1 {
-                font-size: 32px;
+                font-size: 28px;
+                line-height: 1.2;
             }
 
             h2 {
-                font-size: 26px;
+                font-size: 24px;
+            }
+
+            .section-header-box {
+                gap: 12px;
+                padding-bottom: 15px;
             }
 
             .subtitle-tag {
@@ -914,44 +944,55 @@
 
                     <div class="fossil-node active" data-pct="0">
                         <div class="fossil-icon-wrapper"><i class="fa-solid fa-paw"></i></div>
-                        <div class="fossil-name">Lizard Ancestor</div>
-                        <div class="fossil-detail">Terrestrial quadrupeds retaining 4 fully functional legs.</div>
-                    </div>
-
-                    <div class="fossil-node" data-pct="20" style="border-color:#c8922a;">
-                        <div class="fossil-icon-wrapper" style="border-color:#c8922a; color:#c8922a;"><i
-                                class="fa-solid fa-compress"></i></div>
-                        <div class="fossil-name">Tetrapodophis</div>
-                        <div class="fossil-detail">Four tiny micro-limbs adapted for mating rather than walking.</div>
-                    </div>
-
-                    <div class="fossil-node" data-pct="40" style="border-color:#c8922a;">
-                        <div class="fossil-icon-wrapper" style="border-color:#c8922a; color:#c8922a;"><i
-                                class="fa-solid fa-bone"></i></div>
-                        <div class="fossil-name">Najash</div>
-                        <div class="fossil-detail">Clear, robust hind limbs permanently affixed to a sacral joint.</div>
-                    </div>
-
-                    <div class="fossil-node" data-pct="60" style="border-color:#888;">
-                        <div class="fossil-icon-wrapper" style="border-color:#888; color:#888;"><i
-                                class="fa-solid fa-mound"></i></div>
-                        <div class="fossil-name">Dinilysia</div>
-                        <div class="fossil-detail">A highly reduced, efficiently streamlined burrowing ancestor.</div>
-                    </div>
-
-                    <div class="fossil-node" data-pct="80" style="border-color:#4a82b0;">
-                        <div class="fossil-icon-wrapper" style="border-color:#4a82b0; color:#4a82b0;"><i
-                                class="fa-solid fa-circle-nodes"></i></div>
-                        <div class="fossil-name">Modern Boas</div>
-                        <div class="fossil-detail">Displays external claws (spurs) and hidden internal pelvic remnants.
+                        <div class="fossil-detail-content">
+                            <div class="fossil-name">Lizard Ancestor</div>
+                            <div class="fossil-detail">Terrestrial quadrupeds retaining 4 fully functional legs.</div>
                         </div>
                     </div>
 
-                    <div class="fossil-node" data-pct="100" style="border-color:var(--primary);">
-                        <div class="fossil-icon-wrapper" style="border-color:var(--primary); color:var(--primary);"><i
-                                class="fa-solid fa-bolt"></i></div>
-                        <div class="fossil-name">Advanced Vipers</div>
-                        <div class="fossil-detail">Demonstrates radically evolved, 100% fully limbless anatomy.</div>
+                    <div class="fossil-node" data-pct="20">
+                        <div class="fossil-icon-wrapper"><i class="fa-solid fa-compress"></i></div>
+                        <div class="fossil-detail-content">
+                            <div class="fossil-name">Tetrapodophis</div>
+                            <div class="fossil-detail">Four tiny micro-limbs adapted for mating rather than walking.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fossil-node" data-pct="40">
+                        <div class="fossil-icon-wrapper"><i class="fa-solid fa-bone"></i></div>
+                        <div class="fossil-detail-content">
+                            <div class="fossil-name">Najash</div>
+                            <div class="fossil-detail">Clear, robust hind limbs permanently affixed to a sacral joint.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fossil-node" data-pct="60">
+                        <div class="fossil-icon-wrapper"><i class="fa-solid fa-mound"></i></div>
+                        <div class="fossil-detail-content">
+                            <div class="fossil-name">Dinilysia</div>
+                            <div class="fossil-detail">A highly reduced, efficiently streamlined burrowing ancestor.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="fossil-node" data-pct="80">
+                        <div class="fossil-icon-wrapper"><i class="fa-solid fa-circle-nodes"></i></div>
+                        <div class="fossil-detail-content">
+                            <div class="fossil-name">Modern Boas</div>
+                            <div class="fossil-detail">Displays external claws (spurs) and hidden internal pelvic
+                                remnants.</div>
+                        </div>
+                    </div>
+
+                    <div class="fossil-node" data-pct="100">
+                        <div class="fossil-icon-wrapper"><i class="fa-solid fa-bolt"></i></div>
+                        <div class="fossil-detail-content">
+                            <div class="fossil-name">Advanced Vipers</div>
+                            <div class="fossil-detail">Demonstrates radically evolved, 100% fully limbless anatomy.
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
